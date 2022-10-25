@@ -20,4 +20,4 @@ jobs:
         echo "repo :: ${{ secrets.PANTHEON_REPO }}" . $pantheon_repo
         echo "keys2 :: ${{ secrets.PANTHEON_SSH_KEY }}" . $key
         git remote add pantheon $pantheon_repo
-        git push -f pantheon dev-build 
+        git push -f pantheon HEAD:dev-build 
