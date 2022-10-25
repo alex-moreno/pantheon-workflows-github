@@ -20,9 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: site name
-        run: echo "$pantheon_site_name"
-
       - name: Installing Terminus
         uses: kopepasah/setup-pantheon-terminus@master
         with:
@@ -30,11 +27,4 @@ jobs:
 
       - name: deployer
         run: |
-          echo $secrets.PANTHEON_SITE_NAME
-          echo "site name"
-          echo $pantheon_site_name.dev
-          echo "Known hosts"
-          echo $known_hosts
-          echo "environment: "
-          echo $pantheon_env
           terminus multidev:create $pantheon_site_name $destination_env

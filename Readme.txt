@@ -17,3 +17,6 @@ Setup the next Github Secrets (Settings->Secrets->Actions->Add new repository se
         Host *.drush.in
           StrictHostKeyChecking no
           ´´´
+
+Note: The key added  id_rsa_pantheon_github
+    cat id_rsa_pantheon_github
