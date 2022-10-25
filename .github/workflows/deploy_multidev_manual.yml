@@ -1,0 +1,43 @@
+name: Deploy to MultiDev (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      destination_env:
+        description: 'To which MultiDev environment do you wish to deploy? (dev-build, stage-build)'
+        required: true
+        default: 'dev-build'
+
+env:
+  php_version: '7.4'
+  destination_env: ${{ github.event.inputs.destination_env }}
+  pantheon_repo: ${{ secrets.PANTHEON_REPO }}
+  pantheon_site_name: ${{ secrets.PANTHEON_SITE_NAME }}
+  known_hosts: ${{ secrets.KNOWN_HOSTS }}
+
+jobs:
+
+  deploy:
+    name: Simple workflow
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: site name
+        run: echo "$pantheon_site_name"
+
+      - name: Installing Terminus
+        uses: kopepasah/setup-pantheon-terminus@master
+        with:
+          pantheon-machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
+
+      - name: deployer
+        run: |
+          echo $secrets.PANTHEON_SITE_NAME
+          echo "site name"
+          echo $pantheon_site_name.dev
+          echo "Known hosts"
+          echo $known_hosts
+          echo "environment: "
+          echo $pantheon_env
+          terminus multidev:create $pantheon_site_name $destination_env
