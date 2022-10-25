@@ -1,4 +1,4 @@
-name: Deploy to MultiDev (automated with merge TODO)
+name: Create MultiDev environment (automated with merge TODO)
 
 on:
   pull_request:

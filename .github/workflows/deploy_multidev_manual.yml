@@ -1,4 +1,4 @@
-name: Deploy to MultiDev (manual)
+name: Create MultiDev environment (manual)
 
 on:
   workflow_dispatch:
